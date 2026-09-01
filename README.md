@@ -1,11 +1,16 @@
-# NP OSCE Leader V0.9.1
+# NP OSCE Leader V0.9.2
 
-- Management 改為全點選，不再要求文字輸入。
-- 點選順序即處置優先序，畫面自動顯示 1、2、3…。
-- 可取消已選處置，後續順位自動重排。
-- Real OSCE 不顯示答案；Training Mode 才顯示即時回饋。
-- 修正 Management 評分只認精確文字的問題。
-- 加強 ICU/intubation/IVIG/PLEX/MG/bulbar/FVC/NIF 等同義詞辨識。
-- IM29 MG crisis 改為臨床自然問句與完整 management 選項。
+## 核心修正：不再漏掉必答選項
+- 每一題的所有核心 History 一定出現在 History 可選範圍。
+- 每一題的所有核心 PE / MSE 一定出現在可選範圍。
+- 每一題的所有核心 Investigation 一定出現在可選範圍。
+- 每一題的所有核心 Management 一定出現在可選範圍。
+- 其餘空位再隨機加入大量干擾選項。
+- 自訂輸入保留，但只做額外追問，不需要靠自由輸入才能拿到核心分數。
+
+## IM14 HHS 特別修正
+- 現在病史：症狀時間、糖尿病控制／漏藥、感染誘因。
+- 檢查：glucose、pH/HCO3、serum osmolality、Na/K/corrected Na、感染評估。
+- Management：fluid、電解質/滲透壓監測、insulin、處理 precipitating cause、避免 glucose/osmolality 下降過快。
 
 © 2026 洪苡瑾・鄭介炬 版權所有｜未經授權請勿修改、重製、轉載或二次發布。
