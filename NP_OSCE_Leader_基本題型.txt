@@ -1,0 +1,568 @@
+NP OSCE Leader｜基本題型整理
+版本：V0.6
+用途：專科護理師 OSCE／口試考前快速複習
+注意：本文件為訓練整理，非衛福部官方題庫或正式評分表。
+
+====================
+一、內科基本題型
+====================
+
+1. 胸痛
+常見鑑別：
+- ACS / STEMI / NSTEMI
+- Aortic dissection
+- Pulmonary embolism
+- Pericarditis
+- Pneumothorax
+- Esophageal rupture
+
+必問：
+- OPQRST
+- 發作時間、是否突然達高峰
+- 放射位置
+- 呼吸困難、冒冷汗、噁心
+- 咳血、單側腿腫
+- 高血壓、CAD、VTE risk
+- 抗凝血藥、PDE5 inhibitor
+Critical miss：
+- STEMI 未早期 ECG
+- 主動脈剝離誤給 thrombolytic
+- PE 未判斷 hemodynamic stability
+
+2. 呼吸困難
+常見鑑別：
+- Acute heart failure / pulmonary edema
+- COPD exacerbation
+- Severe asthma
+- PE
+- Pneumonia
+- Pneumothorax
+
+必問：
+- onset、orthopnea、PND
+- 咳嗽、痰、發燒
+- wheezing
+- VTE risk
+- baseline O2 / inhaler use
+必做：
+- SpO2、呼吸功、肺音、循環
+Critical miss：
+- 未先處理低氧
+- severe asthma 出現 silent chest 未升級
+- hypercapnia＋嗜睡未辨認 ventilatory failure
+
+3. 意識改變
+常見鑑別：
+- Hypoglycemia
+- Sepsis
+- Stroke
+- Delirium
+- Electrolyte abnormality
+- Drug intoxication
+
+必做：
+- ABC
+- POC glucose
+- GCS
+- focal neurological signs
+- infection / medication review
+Critical miss：
+- 沒先量血糖
+- 把 delirium 當 dementia
+- 忽略 airway risk
+
+4. 發燒／敗血症
+常見來源：
+- UTI
+- Pneumonia
+- Cholangitis
+- Neutropenic fever
+- Meningitis
+- SBP
+
+必問：
+- 感染症狀
+- 免疫低下
+- recent antibiotics / hospitalization
+必做：
+- hemodynamic status
+- lactate
+- organ dysfunction
+- cultures
+Critical miss：
+- 抗生素延誤
+- 未處理 shock
+- 忽略 source control
+
+5. 腹痛
+常見鑑別：
+- Pancreatitis
+- Cholangitis
+- Cholecystitis
+- GI bleed
+- SBP
+- Perforation
+- Mesenteric ischemia
+
+必問：
+- location / radiation
+- onset
+- vomiting / stool
+- jaundice
+- alcohol / NSAID
+Critical miss：
+- peritonitis 未辨認
+- shock 未優先處理
+
+6. 黑便／吐血
+必問：
+- hematemesis / coffee-ground
+- melena
+- NSAID
+- anticoagulants
+- liver cirrhosis / varices
+必做：
+- orthostatic signs
+- large-bore IV
+- Hb / INR / type & cross
+Critical miss：
+- hemodynamic compromise 未處理
+- variceal bleed 未安排 urgent endoscopy
+
+7. 電解質異常
+高血鉀：
+- ECG tall T / wide QRS
+- first priority：IV calcium when ECG toxicity
+低血鈉：
+- neurological symptoms
+- correction rate
+Critical miss：
+- hyperkalemia ECG change 卻未 calcium
+- severe hyponatremia 矯正過快
+
+8. 內分泌急症
+常見：
+- DKA
+- HHS
+- Thyroid storm
+- Adrenal crisis
+必問：
+- DM / insulin
+- steroid use
+- thyroid history
+- trigger
+Critical miss：
+- DKA 未監測 K
+- adrenal crisis 等 cortisol 才治療
+- thyroid storm 錯誤治療順序
+
+9. 神經
+常見：
+- Stroke
+- Posterior circulation stroke
+- Status epilepticus
+- Meningitis
+- Myasthenic crisis
+Critical miss：
+- 未確認 last known well
+- status seizure 延誤 benzodiazepine
+- MG 只看 SpO2，不看 ventilatory failure
+
+10. 心血管休克
+常見：
+- Cardiogenic shock
+- Tamponade
+- Aortic dissection
+- Hypertensive emergency
+Critical miss：
+- tamponade 未 urgent drainage
+- hypertensive emergency 降壓過快
+
+====================
+二、外科基本題型
+====================
+
+1. 急腹症
+常見：
+- Appendicitis
+- SBO
+- Perforated ulcer
+- Strangulated hernia
+- Mesenteric ischemia
+
+必問：
+- pain migration
+- obstipation
+- vomiting
+- prior surgery
+- sudden severe pain
+必做：
+- peritoneal signs
+- hemodynamic status
+Critical miss：
+- peritonitis 未處理
+- strangulation 未辨認
+- mesenteric ischemia 等到 peritonitis 才處理
+
+2. 術後惡化
+常見：
+- Anastomotic leak
+- Post-op bleeding
+- Wound dehiscence / evisceration
+- Post-op PE
+- Neck hematoma after thyroid surgery
+
+必問：
+- postop day
+- pain trend
+- drain output
+- fever
+- dyspnea
+Critical miss：
+- postoperative shock 當正常術後反應
+- neck hematoma 等 CT
+- evisceration 把 bowel 推回去
+
+3. 胸外傷
+常見：
+- Tension pneumothorax
+- Massive hemothorax
+- Pulmonary contusion
+Critical miss：
+- tension pneumothorax 等 CXR
+- massive hemothorax 延誤 operative control
+
+4. 腹部外傷
+常見：
+- Splenic rupture
+- Liver injury
+必做：
+- FAST
+- hemorrhagic shock recognition
+- MTP consideration
+Critical miss：
+- unstable trauma 先送 CT
+
+5. 血管急症
+常見：
+- Ruptured AAA
+- Acute limb ischemia
+必問：
+- sudden onset
+- AF
+- smoking / HTN
+必做：
+- distal pulse
+- 6 Ps
+Critical miss：
+- threatened limb 延誤 vascular consult
+- ruptured AAA 不穩定仍送 CT
+
+6. 骨科急症
+常見：
+- Cauda equina syndrome
+- Compartment syndrome
+- Open fracture
+- Hip fracture
+Critical miss：
+- 未問 bladder/bowel
+- 有 pulse 就排除 compartment syndrome
+- open fracture 延誤 antibiotics
+
+7. 泌尿外科
+常見：
+- Obstructed infected stone
+- Testicular torsion
+Critical miss：
+- infected obstruction 未 decompression
+- torsion 等超音波延誤 exploration
+
+8. 壞死性感染
+常見：
+- Necrotizing fasciitis
+- Fournier gangrene
+Critical miss：
+- 等影像才找 surgeon
+- 只當 cellulitis
+
+9. 燒燙傷
+重點：
+- airway
+- inhalation injury
+- CO poisoning
+Critical miss：
+- SpO2 正常就排除 CO poisoning
+- progressive hoarseness 未 early airway plan
+
+10. 上消化道外科急症
+常見：
+- Boerhaave syndrome
+- Pancreatic cancer
+Critical miss：
+- esophageal rupture 未 NPO/antibiotics/surgery
+- malignancy red flags 未 staging
+
+====================
+三、精神科基本題型
+====================
+
+1. 自殺風險
+常見：
+- Major depression
+- Adolescent depression
+- Borderline self-harm
+- Overdose
+
+一定要問：
+- 有沒有想死
+- 有沒有計畫
+- 方法
+- 可近性
+- intent
+- past attempts
+- protective factors
+Critical miss：
+- 不敢直接問 suicide
+- 有明確 plan 仍讓病人單獨離開
+
+2. 暴力風險
+常見：
+- Command hallucination
+- Acute psychosis
+- Mania
+- Substance-induced psychosis
+
+一定要問：
+- 聲音叫他做什麼
+- target 是誰
+- weapon access
+- 過去是否服從幻聽
+Critical miss：
+- 未問 target
+- 未做安全處置
+
+3. MSE
+基本框架：
+- Appearance / behavior
+- Speech
+- Mood / affect
+- Thought process
+- Thought content
+- Perception
+- Cognition
+- Insight
+- Judgment
+
+4. Delirium vs Dementia
+Delirium：
+- acute onset
+- fluctuating
+- inattention
+- altered consciousness
+
+Dementia：
+- chronic progressive
+- attention early often preserved
+
+Critical miss：
+- 把 acute confusion 當 dementia
+- 未找 infection / hypoxia / medication / glucose
+
+5. Mania
+必問：
+- decreased need for sleep
+- grandiosity
+- pressured speech
+- flight of ideas
+- risky behavior
+- substance use
+Critical miss：
+- 只問失眠，不問是否“不需要睡”
+
+6. Psychosis
+必問：
+- hallucination
+- delusion
+- command content
+- substance use
+- medication adherence
+- risk to self/others
+Critical miss：
+- 與妄想正面爭辯
+- 強化妄想內容
+
+7. Alcohol withdrawal
+必問：
+- last drink
+- amount
+- previous seizure / DT
+Critical miss：
+- 未補 thiamine
+- 只用 antipsychotic
+
+8. Acute agitation
+處理原則：
+- verbal de-escalation
+- low-stimulation environment
+- least restrictive approach
+- rule out medical causes
+Critical miss：
+- 對嗆
+- restraint 後未監測
+
+9. Capacity assessment
+四個核心：
+- Understanding
+- Appreciation
+- Reasoning
+- Expressing a choice
+Critical miss：
+- 拒絕治療＝自動有能力
+- 精神疾病＝自動沒有能力
+
+10. Trauma-informed care
+適用：
+- PTSD
+- IPV
+- Sexual assault
+核心：
+- privacy
+- choice
+- control
+- consent
+- nonjudgmental communication
+Critical miss：
+- 強迫重述創傷
+- 在加害者面前直接詢問
+- 未逐步取得同意
+
+11. Psychotropic adverse effects
+NMS：
+- fever
+- rigidity
+- autonomic instability
+- altered mental status
+Serotonin syndrome：
+- clonus
+- hyperreflexia
+- agitation
+- autonomic signs
+Lithium toxicity：
+- coarse tremor
+- ataxia
+- confusion
+Akathisia：
+- inner restlessness
+- pacing
+Critical miss：
+- 未停 culprit drug
+- akathisia 誤當 psychotic agitation
+
+12. Eating disorder
+必問：
+- weight loss
+- restriction
+- purging
+- body image
+必做：
+- HR / BP / Temp
+- ECG
+- K / Mg / Phos
+Critical miss：
+- 忽略 medical instability
+- refeeding syndrome 未防範
+
+====================
+四、所有科別共通 OSCE 骨架
+====================
+
+1. 開場
+- 自我介紹
+- 確認病人身分
+- 說明目的
+- 取得同意
+
+2. 先判斷是否有 ABC / immediate threat
+- airway
+- breathing
+- circulation
+- consciousness
+- severe bleeding
+- suicide / violence risk
+
+3. Focused history
+- 不要整份 ROS 全問
+- 要依 chief complaint 抓高風險鑑別
+
+4. Focused assessment
+內外科：
+- vital signs
+- targeted PE
+精神科：
+- MSE
+- suicide / violence / vulnerability risk
+
+5. Investigation
+- 說明為什麼做
+- 不要無差別全開
+
+6. Clinical reasoning
+說出：
+- 最可能診斷
+- supporting evidence
+- dangerous differential
+- 為什麼某些鑑別較低
+
+7. Management
+順序：
+- 先救命
+- 再確診
+- 再 definitive treatment
+- 必要時 escalation / consult
+
+8. 病人說明
+- 我目前最擔心什麼
+- 下一步要做什麼
+- 為什麼
+- 有哪些警訊
+- 確認病人理解
+
+9. 最後 2 分鐘
+一定要收尾：
+- diagnosis / DDx
+- plan
+- patient explanation
+- safety net
+
+====================
+五、最常見 Critical Miss
+====================
+
+- 未先處理 ABC
+- 未處理低氧
+- 未處理 shock
+- 未量 POC glucose
+- 未辨認 sepsis
+- 未處理 active bleeding
+- 未確認 stroke last known well
+- tension pneumothorax 等影像
+- hyperkalemia ECG change 未給 calcium
+- high suicide risk 未建立安全措施
+- command hallucination 未問 target / weapon
+- delirium 未找可逆原因
+- 手術急症延誤外科會診
+- 精神科只貼診斷，未做 risk assessment
+- 最後沒有向病人說明 plan
+
+====================
+六、考場速記口訣
+====================
+
+內外科：
+「先危急、再主訴；先鑑別致命，再補一般診斷。」
+
+精神科：
+「先安全、再 MSE；先問自傷傷人，再談診斷。」
+
+所有科別：
+「問得有目的、查得有理由、處置有順序、最後要說給病人懂。」
