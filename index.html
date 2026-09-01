@@ -28,7 +28,7 @@ select,textarea,input[type="text"]{width:100%;padding:11px;border:1px solid var(
 </style>
 </head>
 <body><div class="app">
-<div class="top"><div class="brand"><img src="assets/np-osce-icon.png" alt=""><div><h1>NP OSCE Leader</h1><div class="small">Real OSCE Mode｜內科・外科・精神科</div><div class="byline">臨床構想與原型設計｜<b>奇美加護醫學部 洪苡瑾</b>・<b>台北慈濟醫院 專師護理部護理長 鄭介炬</b></div></div></div><div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end"><div class="badge">121 cases</div><div class="badge"><b>Build V1.0.1 Pediatric Edition</b></div></div></div>
+<div class="top"><div class="brand"><img src="assets/np-osce-icon.png" alt=""><div><h1>NP OSCE Leader</h1><div class="small">Real OSCE Mode｜內科・外科・精神科</div><div class="byline">臨床構想與原型設計｜<b>奇美加護醫學部 洪苡瑾</b>・<b>台北慈濟醫院 專師護理部護理長 鄭介炬</b></div></div></div><div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end"><div class="badge">121 cases</div><div class="badge"><b>Build V1.0.2 Pediatric Edition</b></div></div></div>
 
 <section id="setup" class="card">
 <h2>模式</h2>
@@ -48,8 +48,8 @@ select,textarea,input[type="text"]{width:100%;padding:11px;border:1px solid var(
 <select id="historyFramework"><option>OLD CARTS</option><option>LQQOPERA</option><option>DEMP FAST</option><option>HEENT-HLUGE</option><option>PEDS：SAMPLE＋Birth／Feeding／Vaccine／Development</option><option selected>不提示／自由問診</option></select>
 <h3>題目</h3><select id="caseSelect"></select>
 <div class="grid2" style="margin-top:8px"><button id="randomBtn">🎲 隨機換題</button><button id="startBtn" class="primary">開始</button></div>
-<h3>考場鈴聲</h3><label><input type="checkbox" id="bellToggle" checked> 剩 2 分鐘單響；時間到雙響</label>
-<div class="notice" style="margin-top:12px"><b>Real OSCE 規則：</b><br><b>Build V1.0.1 Pediatric Edition：</b>History 核心題與最後 report 使用同一組完整問句，不再顯示「說話／trigger」等內部簡寫。<br><br>每題所有核心 History／PE／檢查／Management 都一定會存在於可選範圍，只是會和大量干擾選項混在一起。自訂輸入只是額外追問，不再用來補系統漏題。<br><br>你問什麼，病人才回答什麼。沒有綠燈、沒有「還差幾題」、沒有系統提示。按「結束 History／進下一階段」後就不能回頭；漏掉的資料到最後才會揭曉。</div>
+<div class="notice" style="margin-top:10px"><b>操作方式：</b>預設問題請直接點一下；若要補問預設外的內容，可在下方自由輸入，電腦版按 Enter 送出。</div><h3>考場鈴聲</h3><label><input type="checkbox" id="bellToggle" checked> 剩 2 分鐘單響；時間到雙響</label>
+<div class="notice" style="margin-top:12px"><b>Real OSCE 規則：</b><br><b>Build V1.0.2 Pediatric Edition：</b>History 核心題與最後 report 使用同一組完整問句，不再顯示「說話／trigger」等內部簡寫。<br><br>每題所有核心 History／PE／檢查／Management 都一定會存在於可選範圍，只是會和大量干擾選項混在一起。自訂輸入只是額外追問，不再用來補系統漏題。<br><br>你問什麼，病人才回答什麼。沒有綠燈、沒有「還差幾題」、沒有系統提示。按「結束 History／進下一階段」後就不能回頭；漏掉的資料到最後才會揭曉。</div>
 </section>
 
 <section id="prep" class="card hidden">
@@ -72,7 +72,7 @@ select,textarea,input[type="text"]{width:100%;padding:11px;border:1px solid var(
 <div class="card grid2"><button id="retryBtn">同題再考</button><button id="nextBtn" class="primary">下一題</button></div>
 </section>
 
-<footer>教育訓練用途，非衛福部官方題庫或正式評分系統。｜NP OSCE Leader V1.0.1 Pediatric Edition Real OSCE Mode<br><b>© 2026 洪苡瑾・鄭介炬 版權所有｜未經授權請勿修改、重製、轉載或二次發布。</b></footer>
+<footer>教育訓練用途，非衛福部官方題庫或正式評分系統。｜NP OSCE Leader V1.0.2 Pediatric Edition Real OSCE Mode<br><b>© 2026 洪苡瑾・鄭介炬 版權所有｜未經授權請勿修改、重製、轉載或二次發布。</b></footer>
 </div>
 
 <script>
@@ -107,7 +107,7 @@ document.getElementById("randomBtn").onclick=randomCase;
 document.getElementById("startBtn").onclick=()=>{ensureAudio();current=CASES.find(c=>c.id===document.getElementById("caseSelect").value);if(!current)return;if(mode==="review")return reviewCase();document.getElementById("prepPatient").textContent=current.patient;document.getElementById("prepChief").innerHTML="<b>主訴：</b>"+current.chief;show("prep");runTimer("prepTimer",120,()=>document.getElementById("enterBtn").click())};
 document.getElementById("enterBtn").onclick=()=>{clearInterval(prepInt);startStation()};
 
-function startStation(){stage=0;finished=false;asked={history:[],exam:[],tests:[],plans:[],comm:[]};errors=[];show("station");document.getElementById("stationMeta").textContent=trackName(current.track)+"｜"+current.category+"｜Data V1.0.1 Pediatric Edition";document.getElementById("stationPatient").textContent=current.patient;document.getElementById("stationChief").textContent="主訴："+current.chief;renderStagebar();renderStage();runTimer("stationTimer",900,()=>finish(true))}
+function startStation(){stage=0;finished=false;asked={history:[],exam:[],tests:[],plans:[],comm:[]};errors=[];show("station");document.getElementById("stationMeta").textContent=trackName(current.track)+"｜"+current.category+"｜Data V1.0.2 Pediatric Edition";document.getElementById("stationPatient").textContent=current.patient;document.getElementById("stationChief").textContent="主訴："+current.chief;renderStagebar();renderStage();runTimer("stationTimer",900,()=>finish(true))}
 function renderStagebar(){document.getElementById("stagebar").innerHTML=STAGES.map((s,i)=>`<span class="stagepill ${i<stage?"done":i===stage?"current":""}">${s}</span>`).join("")}
 
 function normText(s){
@@ -263,12 +263,52 @@ function buildPool(requiredItems,genericItems,maxCount){
   return shuffle([...required,...generic.slice(0,room)]);
 }
 function renderHistory(host){
-  host.innerHTML=`<h2>History taking</h2><div class="small">${current.track==="pediatric"?"兒科要同時問 current illness、feeding/urine、birth/vaccine/development 與 caregiver history。":"你要自己決定問什麼。Real OSCE 不會告訴你哪題重要。"}</div><div class="notice" style="margin:10px 0">你選的框架：${document.getElementById("historyFramework").value}</div>`;
+  host.innerHTML=`<h2>History taking</h2>
+<div class="small">
+<b>主要作答方式：</b>直接點選下列問題，病人會立即回答。Real OSCE 不會告訴你哪題是核心題。<br>
+${current.track==="pediatric"?"兒科要同時注意 current illness、feeding/urine、birth/vaccine/development 與 caregiver history。":""}
+</div><div class="notice" style="margin:10px 0">你選的框架：${document.getElementById("historyFramework").value}</div>`;
   let historyBase=current.track==="pediatric"?PED_HISTORY_POOL:HISTORY_POOL; let pool=buildPool(current.history.map(x=>x[0]),historyBase,34);
-  let grid=document.createElement("div");grid.className="optiongrid";pool.forEach(q=>grid.appendChild(makeOpt(q,"history","", "history")));host.appendChild(grid);
-  host.innerHTML+=`<h3>其他你想問的問題</h3><div class="grid2"><input id="customHistory" type="text" placeholder="${current.track==='pediatric'?'自己輸入問題，例如：今天濕尿布幾片？':'自己輸入問題，例如：糞便顏色有變白嗎？'}"><button id="askCustomH">詢問</button></div><div id="customHAns"></div>`;
-  document.getElementById("askCustomH").onclick=()=>{let q=document.getElementById("customHistory").value.trim();if(!q)return;let mapped=mapQuestionToCase(q,current.history),out=document.getElementById("customHAns");if(mapped){out.innerHTML+=`<div class="answer"><b>你問：</b>${q}<br><b>病人：</b>${mapped.x[1]}</div>`;if(!asked.history.includes(mapped.i)) asked.history.push(mapped.i)}else{out.innerHTML+=`<div class="answer"><b>你問：</b>${q}<br><b>病人：</b>沒有特別注意到／沒有這方面的不舒服。</div>`;errors.push("History："+q)};document.getElementById("customHistory").value=""};
-  let row=document.createElement("div");row.className="nextrow";let n=document.createElement("button");n.className="primary";n.textContent="結束 History → 進入 PE / MSE";n.onclick=leaveStage;row.appendChild(n);host.appendChild(row)
+  let tip=document.createElement("div");
+  tip.className="notice";
+  tip.style.margin="10px 0";
+  tip.innerHTML="💡 <b>點一下問題＝詢問病人。</b> 已問過的題目只會做低調標記；Real OSCE 不會顯示對錯。";
+  host.appendChild(tip);
+  let grid=document.createElement("div");grid.className="optiongrid";
+  pool.forEach(q=>grid.appendChild(makeOpt(q,"history","", "history")));
+  host.appendChild(grid);
+  host.innerHTML+=`
+<h3>預設選項沒有你想問的內容？</h3>
+<div class="small" style="margin-bottom:6px">自由輸入是補充功能，不需要把所有問題都打字。電腦版輸入後按 <b>Enter</b> 即可送出。</div>
+<div class="grid2">
+  <input id="customHistory" type="text" placeholder="${current.track==='pediatric'?'例如：今天濕尿布幾片？':'例如：糞便顏色有變白嗎？'}">
+  <button id="askCustomH">送出問題</button>
+</div>
+<div id="customHAns"></div>`;
+  
+  function submitCustomHistory(){
+    let input=document.getElementById("customHistory");
+    let q=input.value.trim();
+    if(!q)return;
+    let mapped=mapQuestionToCase(q,current.history),out=document.getElementById("customHAns");
+    if(mapped){
+      out.innerHTML+=`<div class="answer"><b>你問：</b>${q}<br><b>病人：</b>${mapped.x[1]}</div>`;
+      if(!asked.history.includes(mapped.i)) asked.history.push(mapped.i);
+    }else{
+      out.innerHTML+=`<div class="answer"><b>你問：</b>${q}<br><b>病人：</b>沒有特別注意到／沒有這方面的不舒服。</div>`;
+      errors.push("History："+q);
+    }
+    input.value="";
+    input.focus();
+  }
+  document.getElementById("askCustomH").onclick=submitCustomHistory;
+  document.getElementById("customHistory").addEventListener("keydown",(e)=>{
+    if(e.key==="Enter"){
+      e.preventDefault();
+      submitCustomHistory();
+    }
+  });
+let row=document.createElement("div");row.className="nextrow";let n=document.createElement("button");n.className="primary";n.textContent="結束 History → 進入 PE / MSE";n.onclick=leaveStage;row.appendChild(n);host.appendChild(row)
 }
 function renderExam(host){
   host.innerHTML=`<h2>${current.track==="psychiatric"?"Mental Status Examination / Risk":current.track==="pediatric"?"Pediatric Focused PE":"Focused PE"}</h2><div class="small">做了才會得到 finding；同義檢查會回傳同一個 finding。系統不再把「未對應到病例資料」誤寫成「正常」。進下一階段後不能回來補。</div>`;
@@ -352,7 +392,7 @@ function finish(timeout=false){
   let misses=[...h.miss.map(x=>"History："+x),...e.miss.map(x=>"PE/MSE："+x),...t.miss.map(x=>"檢查："+x),...correctPlans.filter((x,i)=>!matchedPlanIdx.has(i)).map(x=>"Management："+x)];
   if(!dxCorrect)misses.unshift("核心診斷未答對");
   document.getElementById("reportTitle").textContent=current.id+"｜"+current.title;document.getElementById("reportDx").innerHTML=`標準核心診斷：<b>${current.dx}</b>`;document.getElementById("reportScore").textContent=raw;
-  document.getElementById("reportSummary").innerHTML=`<div class="small">病例資料版本：V1.0.1 Pediatric Edition</div><div class="${raw>=60?"ok":"bad"}"><b>${raw>=60?"訓練達標":"訓練未達標"}</b></div><div class="small">History ${h.got}/${h.total}｜PE/MSE ${e.got}/${e.total}｜Tests ${t.got}/${t.total}｜Diagnosis ${dxCorrect?"✓":"✗"}｜低價值／無關問題 ${errors.length}</div>`;
+  document.getElementById("reportSummary").innerHTML=`<div class="small">病例資料版本：V1.0.2 Pediatric Edition</div><div class="${raw>=60?"ok":"bad"}"><b>${raw>=60?"訓練達標":"訓練未達標"}</b></div><div class="small">History ${h.got}/${h.total}｜PE/MSE ${e.got}/${e.total}｜Tests ${t.got}/${t.total}｜Diagnosis ${dxCorrect?"✓":"✗"}｜低價值／無關問題 ${errors.length}</div>`;
   document.getElementById("missed").innerHTML=misses.length?misses.map(x=>`<div class="bad" style="margin:6px 0">• ${x}</div>`).join(""):'<div class="ok">核心資料都有問到。</div>';
   document.getElementById("errors").innerHTML=errors.length?unique(errors).slice(0,20).map(x=>`<div class="resultbox">${x}</div>`).join(""):'<div class="ok">沒有明顯低價值選擇。</div>';
   document.getElementById("key").innerHTML=`<b>History：</b>${current.history.filter(x=>x[2]).map(x=>x[0]).join("<br>• ")}<hr><b>PE/MSE：</b>${current.exam.filter(x=>x[2]).map(x=>x[0]).join("、")}<hr><b>Investigation：</b>${current.tests.filter(x=>x[2]).map(x=>x[0]).join("、")}<hr><b>Management：</b>${correctPlans.join(" → ")}<hr>${current.pearls.map(x=>"• "+x).join("<br>")}`;
@@ -361,6 +401,6 @@ function finish(timeout=false){
 function reviewCase(){current=CASES.find(c=>c.id===document.getElementById("caseSelect").value);document.getElementById("reportTitle").textContent=current.id+"｜"+current.title;document.getElementById("reportDx").innerHTML=`標準核心診斷：<b>${current.dx}</b>`;document.getElementById("reportScore").textContent="—";document.getElementById("reportSummary").innerHTML="<div class='small'>Review mode</div>";document.getElementById("missed").innerHTML="";document.getElementById("errors").innerHTML="";document.getElementById("key").innerHTML=`<b>History：</b>${current.history.map(x=>x[0]+" → "+x[1]).join("<br>")}<hr><b>PE/MSE：</b>${current.exam.map(x=>x[0]+" → "+x[1]).join("<br>")}<hr><b>Tests：</b>${current.tests.map(x=>x[0]+" → "+x[1]).join("<br>")}<hr><b>Management：</b>${current.plan.map(x=>(x[1]?"✅ ":"⚠️ ")+x[0]).join("<br>")}`;show("report")}
 document.getElementById("retryBtn").onclick=()=>{show("setup");document.getElementById("caseSelect").value=current.id};
 document.getElementById("nextBtn").onclick=()=>{show("setup");randomCase()};
-refill();randomCase();document.title="NP OSCE Leader V1.0.1 Pediatric Edition｜Real OSCE Mode";
+refill();randomCase();document.title="NP OSCE Leader V1.0.2 Pediatric Edition｜Real OSCE Mode";
 </script>
 </body></html>

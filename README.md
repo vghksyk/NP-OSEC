@@ -1,18 +1,14 @@
-# NP OSCE Leader V1.0.1
+# NP OSCE Leader V1.0.2 Usability Update
 
-## IM30 Status Epilepticus 修正
-- PE「瞳孔與眼位」不再因 generic / case-specific 同義選項重複。
-- 所有核心 Investigation 必定出現在選項中。
-- POC glucose 改為「POC glucose（立即 bedside）」並列為必選核心。
-- brain imaging 不再放在 Investigation 核心清單中誤導時序。
-- 改放在 Management：
-  「控制 seizure 且 ABC 穩定後，因 focal onset／頭痛安排 urgent neuroimaging。」
-- ongoing convulsion 時先送 CT 會被列為錯誤處置。
-- Version / Data badge 統一為 V1.0.1。
+## History taking 操作修正
+- 預設問題改為明確的主要作答方式。
+- 點一下預設問題，病人立即回答。
+- Real OSCE 仍不顯示該題是否為核心題。
+- 自由輸入改為補充功能，不需要所有問題都手動打字。
+- 電腦版自由輸入後按 Enter 即可送出。
+- 保留「送出問題」按鈕，方便手機與平板操作。
+- 介面新增操作提示，降低第一次使用者誤以為一定要打字的情況。
 
-## 系統層級修正
-- clinical option pool 現在會依概念去除同義重複：
-  生命徵象、瞳孔/眼位、肺音、呼吸功、意識、focal neuro、POC glucose 等。
-- case-specific 核心選項優先保留，再加入 generic distractors。
+設計原則：增加 clinical reasoning 壓力，而不是 keyboard burden。
 
 © 2026 洪苡瑾・鄭介炬 版權所有｜未經授權請勿修改、重製、轉載或二次發布。
