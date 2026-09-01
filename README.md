@@ -1,33 +1,58 @@
-# NP OSCE Leader V1.0.4 — Clinical Intent Mapping
+# NP OSCE Leader V1.1 — Mystery OSCE Expansion
 
-## 自由輸入重大更新
-自由輸入不再只依完整字面比對，而是加入 clinical concept mapping。
+總題數：151 cases  
+其中新增 30 題「模糊情境病例」，並將 IM11、IM30 納入 mystery pool。
 
-可辨識例如：
-- 「停酒？」「BZD？」「戒斷？」 → alcohol / benzodiazepine withdrawal
-- 「最近睡覺要墊高嗎？」 → orthopnea
-- 「半夜會喘醒嗎？」 → PND
-- 「體重最近有變重嗎？」 → rapid weight gain
-- 「有漏吃利尿劑嗎？」 → diuretic adherence
-- 「喝水會嗆嗎？」 → bulbar symptom / airway protection
-- 「尿像茶嗎？」 → dark urine
-- 「大便變白嗎？」 → pale stool
-- 「濕尿布幾片？」 → pediatric urine output
-- 「幾週生？」 → birth history
+## 核心改版
+- 新增「🕵️ 模糊題」模式。
+- 主訴改用病人／家屬語言，不先給典型診斷關鍵詞。
+- Real OSCE 模式的題目下拉選單不再顯示病例 title，避免作答前被劇透。
+- 同一類主訴可對應不同診斷，需靠 History、PE、Investigation 拆解。
+
+## 新增 30 題
+Internal medicine 10:
+- atypical NSTEMI
+- hyperkalemia
+- adrenal crisis
+- PE presenting as syncope
+- PCA stroke presenting as visual problem
+- sepsis-associated delirium
+- digoxin toxicity
+- carbon monoxide poisoning
+- uroseptic shock
+- myxedema coma
+
+Surgery 8:
+- mesenteric ischemia
+- anastomotic leak
+- ruptured AAA
+- necrotizing soft tissue infection
+- Boerhaave syndrome
+- compartment syndrome
+- tension pneumothorax after CVC
+- infected obstructing ureter stone
+
+Psychiatry 6:
+- mania
+- delirium
+- NMS
+- akathisia
+- postpartum psychosis
+- catatonia
+
+Pediatrics 6:
+- intussusception presenting as episodic lethargy
+- DKA presenting as abdominal pain/vomiting
+- foreign body aspiration
+- leukemia presenting as leg pain
+- neonatal sepsis without fever
+- anaphylaxis without prominent urticaria
 
 ## 設計原則
-- 同義說法、縮寫、短關鍵字可以辨識。
-- 問錯 clinical concept 仍不會取得答案。
-- 不把系統放寬到「什麼都算對」。
-- unmatched 時虛擬病人回覆改為多種中性句，降低鬼打牆感。
+不是看到題目就猜 diagnosis，而是：
+主訴 → 主動問診 → focused PE → targeted investigations → differential → management.
+
+臨床發想：台北慈濟醫院 專科護理師護理長 鄭介炬  
+原型設計暨後續開發執行：奇美醫院加護醫學部 專科護理師 洪苡瑾
 
 © 2026 洪苡瑾・鄭介炬 版權所有｜未經授權請勿修改、重製、轉載或二次發布。
-
-
-## 同版併入：History 點選紀錄修正
-- 修正預設 History 按鈕綁定 click 後，又因 `innerHTML +=` 重建 DOM，可能導致已點問題未記錄的問題。
-- 改用 `insertAdjacentHTML` 保留既有 event listener。
-- IM11 acute pulmonary edema 核心病史改成完整問句：
-  - orthopnea / PND
-  - rapid weight gain
-  - diuretic adherence
