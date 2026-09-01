@@ -2,7 +2,7 @@
 
 專科護理師 OSCE 模擬訓練平台。
 
-## V0.6.3 Copyright Edition
+## V0.6.4 Bell Edition
 - 內科 30 case
 - 外科 30 case
 - 精神科 30 case
@@ -27,3 +27,10 @@ Settings → Pages → Deploy from a branch → main → /(root)
 未經授權請勿修改、重製、轉載或二次發布本平台內容與程式。
 
 本平台僅供教育訓練用途，並非衛福部官方口試題庫或正式評分系統。
+
+## V0.6.4 更新
+- 加入 OSCE 考場鈴聲提醒
+- 正式考站剩餘 2 分鐘：單響
+- 時間到：雙響
+- 首頁可關閉鈴聲
+- 使用 Web Audio API，不需額外音檔
