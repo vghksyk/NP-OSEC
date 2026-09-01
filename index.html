@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#244f82">
 <link rel="icon" type="image/png" href="assets/np-osce-icon.png">
 <link rel="apple-touch-icon" href="assets/np-osce-icon.png">
-<title>NP OSCE Leader｜V1.1.2 Mystery OSCE</title>
+<title>NP OSCE Leader｜V1.2.1 Pin-to-Scratchpad</title>
 <style>
 :root{--bg:#f3f6fa;--card:#fff;--text:#182233;--muted:#687386;--line:#dbe3ed;--accent:#234f82;--soft:#edf4fb;--danger:#b42318;--ok:#17705e}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}
@@ -25,6 +25,15 @@ select,textarea,input[type="text"]{width:100%;padding:11px;border:1px solid var(
 .planpick{position:relative;padding-left:42px!important}
 .planpick::before{content:attr(data-order);position:absolute;left:10px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#234f82;color:#fff;font-size:12px;font-weight:800}
 .planpick.training-good::before{background:#17705e}.planpick.training-bad::before{background:#b42318}
+
+.pin-note-btn{margin-top:8px;padding:6px 9px;border-radius:10px;font-size:12px;background:#fff;border:1px solid var(--line);width:auto}
+.pin-note-btn.pinned{font-weight:700}
+.pinned-list{display:flex;flex-direction:column;gap:7px;margin:8px 0 12px}
+.pinned-item{display:flex;gap:8px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:9px;background:var(--soft)}
+.pinned-item .note-text{flex:1;font-size:12px;line-height:1.55;white-space:pre-wrap}
+.pinned-item .remove-note{width:auto;padding:4px 8px;font-size:11px;border-radius:9px}
+.note-count{display:inline-block;margin-left:5px;font-size:11px}
+
 </style>
 </head>
 <body><div class="app">
@@ -33,7 +42,7 @@ select,textarea,input[type="text"]{width:100%;padding:11px;border:1px solid var(
 <div class="byline" style="line-height:1.65;margin-top:5px">
   臨床發想｜<b>台北慈濟醫院 專科護理師護理長 鄭介炬</b><br>
   原型設計暨後續開發執行｜<b>奇美醫院加護醫學部 專科護理師 洪苡瑾</b>
-</div></div></div><div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end"><div class="badge">151 cases</div><div class="badge"><b>Build V1.1.2</b></div></div></div>
+</div></div></div><div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end"><div class="badge">151 cases</div><div class="badge"><b>Build V1.2.1</b></div></div></div>
 
 <section id="setup" class="card">
 <h2>模式</h2>
@@ -54,12 +63,12 @@ select,textarea,input[type="text"]{width:100%;padding:11px;border:1px solid var(
 <button data-v="surgical">🔪 外科</button>
 <button data-v="psychiatric">🧠 精神科</button><button data-v="pediatric">🧸 兒科</button>
 </div>
-<h3>History taking 腦內框架</h3>
-<select id="historyFramework"><option>OLD CARTS</option><option>LQQOPERA</option><option>DEMP FAST</option><option>HEENT-HLUGE</option><option>PEDS：SAMPLE＋Birth／Feeding／Vaccine／Development</option><option selected>不提示／自由問診</option></select>
+<h3>History taking 思考框架（optional／不計分）</h3>
+<select id="historyFramework"><option>OLD CARTS</option><option>LQQOPERA</option><option>DEMP FAST</option><option>HEENT-HLUGE</option><option>PEDS：SAMPLE＋Birth／Feeding／Vaccine／Development</option><option selected>不提示／自由問診</option></select><div class="small" style="margin-top:5px">只作為你的腦內 checklist，不影響 scoring，也不要求照順序問。</div>
 <h3>題目</h3><select id="caseSelect"></select>
 <div class="grid2" style="margin-top:8px"><button id="randomBtn">🎲 隨機換題</button><button id="startBtn" class="primary">開始</button></div>
-<div class="notice" style="margin-top:10px"><b>🕵️ 模糊題：</b>主訴只提供病人／家屬會說的內容，不先給疾病名稱或經典 triad；需靠 History、PE 與檢查逐步辨認。Real OSCE 題目下拉選單也會隱藏病例標題，避免開始前被劇透。<br><br><b>操作方式：</b>預設問題請直接點一下；若要補問預設外的內容，可在下方自由輸入，電腦版按 Enter 送出。</div><h3>考場鈴聲</h3><label><input type="checkbox" id="bellToggle" checked> 剩 2 分鐘單響；時間到雙響</label>
-<div class="notice" style="margin-top:12px"><b>Real OSCE 規則：</b><br><b>Build V1.1.2：</b>History 核心題與最後 report 使用同一組完整問句，不再顯示「說話／trigger」等內部簡寫。<br><br>每題所有核心 History／PE／檢查／Management 都一定會存在於可選範圍，只是會和大量干擾選項混在一起。自訂輸入只是額外追問，不再用來補系統漏題。<br><br>你問什麼，病人才回答什麼。沒有綠燈、沒有「還差幾題」、沒有系統提示。按「結束 History／進下一階段」後就不能回頭；漏掉的資料到最後才會揭曉。</div>
+<div class="notice" style="margin-top:10px"><b>📝 Scratchpad：</b>不用把病人回答重新打一遍。History／PE／Investigation 得到資料後，按 📌 即可抄進小抄；是否要記由你決定，系統不會自動整理。<br><br><b>🕵️ 模糊題：</b>主訴只提供病人／家屬會說的內容，不先給疾病名稱或經典 triad；需靠 History、PE 與檢查逐步辨認。Real OSCE 題目下拉選單也會隱藏病例標題，避免開始前被劇透。<br><br><b>操作方式：</b>預設問題請直接點一下；若要補問預設外的內容，可在下方自由輸入，電腦版按 Enter 送出。</div><h3>考場鈴聲</h3><label><input type="checkbox" id="bellToggle" checked> 剩 2 分鐘單響；時間到雙響</label>
+<div class="notice" style="margin-top:12px"><b>Real OSCE 規則：</b><br><b>Build V1.2.1：</b>History 核心題與最後 report 使用同一組完整問句，不再顯示「說話／trigger」等內部簡寫。<br><br>每題所有核心 History／PE／Investigation／Management 都一定會存在於可選範圍，只是會和大量干擾選項混在一起。自訂輸入只是額外追問，不再用來補系統漏題。Communication 為 optional bonus，不完成不扣核心分。<br><br>你問什麼，病人才回答什麼。沒有綠燈、沒有「還差幾題」、沒有系統提示。按「結束 History／進下一階段」後就不能回頭；漏掉的資料到最後才會揭曉。</div>
 </section>
 
 <section id="prep" class="card hidden">
@@ -71,6 +80,17 @@ select,textarea,input[type="text"]{width:100%;padding:11px;border:1px solid var(
 
 <section id="station" class="hidden">
 <div class="card"><div class="casehead"><div><div id="stationMeta" class="kicker"></div><div id="stationPatient" class="patient"></div><div id="stationChief" class="small"></div></div><div id="stationTimer" class="timer">15:00</div></div><div id="stagebar" class="stagebar"></div></div>
+<details class="card" id="scratchCard">
+  <summary><b>📝 考生筆記 Scratchpad</b><span id="pinnedCount" class="note-count">📌 0</span> <span class="small">（全程保留／不計分）</span></summary>
+  <div class="small" style="margin:8px 0">
+    <b>你決定記什麼，系統只幫你抄。</b> History、PE/MSE、Investigation 得到結果後，可按「📌 記到小抄」；系統不會自動判斷重點、分類、產生 DD 或補漏掉的資料。
+  </div>
+  <h3>📌 你主動留下的資料</h3>
+  <div id="pinnedNotes" class="pinned-list"><div class="small">尚未釘選任何資料。</div></div>
+  <h3>✏️ 自己補充（optional）</h3>
+  <div class="small" style="margin-bottom:6px">門外筆記會保留在這裡；你也可以只打很短的 shorthand。</div>
+  <textarea id="stationNotes" placeholder="例如：SOB / HF? PE? ACS?&#10;或只記：問 med / wt / orthopnea"></textarea>
+</details>
 <div class="card"><div id="stageContent"></div></div>
 </section>
 
@@ -82,7 +102,7 @@ select,textarea,input[type="text"]{width:100%;padding:11px;border:1px solid var(
 <div class="card grid2"><button id="retryBtn">同題再考</button><button id="nextBtn" class="primary">下一題</button></div>
 </section>
 
-<footer>教育訓練用途，非衛福部官方題庫或正式評分系統。｜NP OSCE Leader V1.1.2｜Real OSCE Mode<br><b><div class="small" style="margin-top:10px;line-height:1.7">
+<footer>教育訓練用途，非衛福部官方題庫或正式評分系統。｜NP OSCE Leader V1.2.1｜Real OSCE Mode<br><b><div class="small" style="margin-top:10px;line-height:1.7">
 臨床發想：台北慈濟醫院 專科護理師護理長 鄭介炬<br>
 原型設計暨後續開發執行：奇美醫院加護醫學部 專科護理師 洪苡瑾
 </div>
@@ -100,9 +120,9 @@ const PED_EXAM_POOL=["先看年齡別生命徵象與 SpO₂", "先看 general ap
 const PED_TEST_POOL=["POC glucose", "CBC with differential", "Na/K/Cl/HCO₃", "Ca/Mg/Phos", "BUN/Cr", "VBG/ABG", "Lactate", "Urinalysis / urine culture", "Blood cultures", "CSF studies / lumbar puncture", "CXR", "Abdominal ultrasound", "Abdominal X-ray", "Brain CT", "Brain MRI", "12-lead ECG / rhythm strip", "Serum osmolality", "β-hydroxybutyrate / ketones", "AST/ALT/INR", "Acetaminophen level", "Total / direct bilirubin", "DAT / reticulocyte count", "CRP/ESR", "Echocardiography", "Urine protein / creatinine", "Peripheral smear", "Uric acid / LDH", "Skeletal survey"];
 const PED_PLAN_POOL=["先處理 ABC 並使用 age-appropriate equipment", "持續 SpO₂ / cardiorespiratory monitoring", "依體重建立藥物與輸液劑量", "建立 IV / IO access", "需要時給 supplemental oxygen", "若 poor perfusion / shock，給 isotonic fluid bolus 並頻繁 reassess", "評估口服、NG 或 IV hydration", "處理 hypoglycemia 並重測 glucose", "依 protocol 給 weight-based benzodiazepine", "持續 seizure 給 second-line antiseizure medication", "準備 PICU / airway escalation", "給 dexamethasone", "給 nebulized epinephrine", "反覆／連續 SABA + ipratropium", "給 systemic corticosteroid", "重症 asthma 考慮 IV magnesium", "立即 IM epinephrine（weight-based）", "依 PALS protocol 處理 SVT", "不穩定 SVT synchronized cardioversion", "依感染情境給 empiric IV antibiotics", "安排 pediatric surgery consultation", "安排 pediatric hematology/oncology consultation", "安排 pediatric cardiology consultation", "啟動 child protection / mandatory reporting", "提供 caregiver safety-net 與 return precautions", "只因孩子哭鬧就把 tachycardia 當正常", "未依體重就直接套用成人劑量", "先做完整影像再處理 ABC"];
 const ALL_DX=["後循環缺血性腦中風", "急性膽管炎合併敗血症", "急性下壁 STEMI", "肺栓塞", "泌尿道感染併敗血性休克", "上消化道出血", "高血鉀合併心電圖變化", "糖尿病酮酸中毒", "COPD 急性惡化合併高碳酸血症", "重症氣喘急性發作", "急性心因性肺水腫", "細菌性腦膜炎", "重度低血糖", "高滲透壓高血糖狀態 HHS", "症狀性重度低血鈉", "甲狀腺風暴", "腎上腺危象", "過敏性休克", "感染性心內膜炎", "心包填塞", "急性主動脈剝離", "高血壓急症", "食道胃靜脈曲張出血", "自發性細菌性腹膜炎 SBP", "急性胰臟炎", "阻塞性急性腎損傷", "化膿性關節炎", "嗜中性白血球低下發燒", "肌無力危象", "癲癇重積狀態", "馬尾症候群", "胰頭癌造成阻塞性黃疸", "急性闌尾炎", "小腸阻塞", "術後吻合口滲漏合併腹腔感染", "張力性氣胸", "急性肢體缺血", "術後肺栓塞", "腹主動脈瘤破裂", "急性膽囊炎", "消化性潰瘍穿孔", "嵌頓／絞窄性腹股溝疝氣", "急性腸繫膜缺血", "壞死性筋膜炎", "急性筋膜室症候群", "股骨頸骨折", "脾臟破裂造成腹腔內出血", "肝臟裂傷合併出血性休克", "硬腦膜外血腫", "慢性硬腦膜下血腫", "開放性脛骨骨折", "吸入性損傷合併燒傷", "術後出血性休克", "腹部傷口裂開合併內臟外露 evisceration", "感染性阻塞性尿路結石", "睪丸扭轉", "Fournier gangrene", "術後頸部血腫造成 airway compromise", "大量血胸持續出血", "Boerhaave syndrome 食道破裂", "重鬱症合併高度自殺風險", "躁症發作", "思覺失調症急性惡化合併暴力風險", "譫妄", "酒精戒斷症候群", "恐慌發作", "創傷後壓力症候群 PTSD", "強迫症 OCD", "邊緣型人格障礙危機合併自傷風險", "疑自殺性藥物過量", "惡性症候群 NMS", "血清素症候群", "鋰鹽中毒", "神經性厭食症合併醫療不穩定", "興奮劑誘發精神病", "產後精神病", "老年重鬱症合併認知症狀", "失智症合併行為與心理症狀 BPSD", "緊張症 catatonia", "急性躁動需先進行安全與病因評估", "決策能力需進一步評估", "精神病合併治療拒絕，需評估能力與風險", "青少年憂鬱合併自殺風險", "親密關係暴力 IPV 高度疑慮", "性侵後急性創傷反應，需要創傷知情照護", "輕躁症／躁症光譜需評估", "身體症狀障礙", "廣泛性焦慮症", "抗精神病藥相關 akathisia", "路易氏體失智症可能性高", "壺腹癌造成阻塞性黃疸", "急性細支氣管炎（bronchiolitis）", "中度至重度 croup", "嚴重氣喘急性發作", "社區型細菌性肺炎", "小月齡發燒嬰兒：需排除 serious bacterial infection", "單純性熱性痙攣（simple febrile seizure）", "兒童 convulsive status epilepticus", "急性腸胃炎併中度至重度脫水", "腸套疊（intussusception）", "兒童糖尿病酮酸中毒（DKA）", "症狀性低血糖", "兒童 anaphylaxis", "嬰兒 supraventricular tachycardia（SVT）", "Kawasaki disease", "febrile UTI / pyelonephritis", "immune thrombocytopenia（ITP）", "acute leukemia 高度懷疑", "新生兒高膽紅素血症：需風險分層", "neonatal sepsis", "foreign body aspiration", "acetaminophen overdose", "疑似 non-accidental injury / child abuse", "testicular torsion", "兒童 nephrotic syndrome", "IgA vasculitis（Henoch-Schönlein purpura）", "epiglottitis / supraglottitis with threatened airway", "兒童部分厚度燙傷", "hypertrophic pyloric stenosis"];
-const STAGES=["History taking","Focused PE / MSE","Investigation","Clinical reasoning","Management","病人說明"];
+const STAGES=["History taking","Focused PE / MSE","Investigation","DD / Diagnosis","Management","Bonus Communication"];
 let mode="real",track="mixed",caseStyle="all",current=null,stage=0,prepInt=null,stationInt=null,audioCtx=null,finished=false;
-let asked={history:[],exam:[],tests:[],plans:[],comm:[]}, errors=[];
+let asked={history:[],exam:[],tests:[],plans:[],comm:[]}, errors=[], pinnedNotes=[];
 
 function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function trackName(t){return {internal:"內科",surgical:"外科",psychiatric:"精神科",pediatric:"兒科"}[t]||t}
@@ -134,7 +154,18 @@ document.getElementById("randomBtn").onclick=randomCase;
 document.getElementById("startBtn").onclick=()=>{ensureAudio();current=CASES.find(c=>c.id===document.getElementById("caseSelect").value);if(!current)return;if(mode==="review")return reviewCase();document.getElementById("prepPatient").textContent=current.patient;document.getElementById("prepChief").innerHTML="<b>主訴：</b>"+current.chief;show("prep");runTimer("prepTimer",120,()=>document.getElementById("enterBtn").click())};
 document.getElementById("enterBtn").onclick=()=>{clearInterval(prepInt);startStation()};
 
-function startStation(){stage=0;finished=false;asked={history:[],exam:[],tests:[],plans:[],comm:[]};errors=[];show("station");document.getElementById("stationMeta").textContent=trackName(current.track)+"｜"+current.category+"｜Data V1.1.2";document.getElementById("stationPatient").textContent=current.patient;document.getElementById("stationChief").textContent="主訴："+current.chief;renderStagebar();renderStage();runTimer("stationTimer",900,()=>finish(true))}
+function startStation(){
+  stage=0;finished=false;asked={history:[],exam:[],tests:[],plans:[],comm:[]};errors=[];pinnedNotes=[];
+  show("station");
+  document.getElementById("stationMeta").textContent=trackName(current.track)+"｜"+current.category+"｜Data V1.2.1";
+  document.getElementById("stationPatient").textContent=current.patient;
+  document.getElementById("stationChief").textContent="主訴："+current.chief;
+  const prep=document.getElementById("prepNotes")?.value||"";
+  const sn=document.getElementById("stationNotes");if(sn)sn.value=prep;
+  const sc=document.getElementById("scratchCard");if(sc)sc.open=!!prep;
+  renderPinnedNotes();
+  renderStagebar();renderStage();runTimer("stationTimer",900,()=>finish(true))
+}
 function renderStagebar(){document.getElementById("stagebar").innerHTML=STAGES.map((s,i)=>`<span class="stagepill ${i<stage?"done":i===stage?"current":""}">${s}</span>`).join("")}
 
 function normText(s){
@@ -367,14 +398,87 @@ function mapQuestionToCase(question,arr){
   // Intent 命中門檻較高；單純 lexical 仍保留基本彈性
   return bestScore>=2 ? best : null;
 }
+
+function noteSourceLabel(storeKey){
+  return {history:"History",exam:"PE/MSE",tests:"Investigation"}[storeKey]||storeKey;
+}
+function noteKey(storeKey,label,answer){
+  return storeKey+"::"+String(label)+"::"+String(answer);
+}
+function refreshPinButtons(){
+  document.querySelectorAll(".pin-note-btn").forEach(b=>{
+    const on=pinnedNotes.some(n=>n.key===b.dataset.noteKey);
+    b.classList.toggle("pinned",on);
+    b.textContent=on?"📌 已記到小抄":"📌 記到小抄";
+  });
+}
+function renderPinnedNotes(){
+  const host=document.getElementById("pinnedNotes");
+  const count=document.getElementById("pinnedCount");
+  if(count)count.textContent="📌 "+pinnedNotes.length;
+  if(!host)return;
+  host.innerHTML="";
+  if(!pinnedNotes.length){
+    host.innerHTML='<div class="small">尚未釘選任何資料。</div>';
+    refreshPinButtons();
+    return;
+  }
+  pinnedNotes.forEach((n,i)=>{
+    const row=document.createElement("div");row.className="pinned-item";
+    const text=document.createElement("div");text.className="note-text";
+    text.textContent=n.source+"｜"+n.label+" → "+n.answer;
+    const rm=document.createElement("button");rm.className="remove-note";rm.textContent="移除";
+    rm.onclick=()=>{pinnedNotes.splice(i,1);renderPinnedNotes()};
+    row.appendChild(text);row.appendChild(rm);host.appendChild(row);
+  });
+  refreshPinButtons();
+}
+function togglePinNote(storeKey,label,answer){
+  const key=noteKey(storeKey,label,answer);
+  const i=pinnedNotes.findIndex(n=>n.key===key);
+  if(i>=0){
+    pinnedNotes.splice(i,1);
+  }else{
+    pinnedNotes.push({key,source:noteSourceLabel(storeKey),label:String(label),answer:String(answer)});
+  }
+  renderPinnedNotes();
+}
+function makePinButton(storeKey,label,answer){
+  const pin=document.createElement("button");
+  pin.type="button";
+  pin.className="pin-note-btn";
+  pin.dataset.noteKey=noteKey(storeKey,label,answer);
+  pin.textContent=pinnedNotes.some(n=>n.key===pin.dataset.noteKey)?"📌 已記到小抄":"📌 記到小抄";
+  pin.onclick=(e)=>{e.preventDefault();e.stopPropagation();togglePinNote(storeKey,label,answer)};
+  return pin;
+}
+
 function makeOpt(label,kind,answer,storeKey){
-  let wrap=document.createElement("div"),b=document.createElement("button");b.className="opt";b.textContent=label;
+  let wrap=document.createElement("div"),b=document.createElement("button");
+  b.className="opt";b.textContent=label;
   let a=document.createElement("div");a.className="answer hidden";
   b.onclick=()=>{
-    if(b.disabled)return;b.disabled=true;b.classList.add("picked");
+    if(b.disabled)return;
+    b.disabled=true;b.classList.add("picked");
     const mapped=mapQuestionToCase(label,current[storeKey]);
-    if(mapped){a.textContent=mapped.x[1];a.classList.remove("hidden");if(!asked[storeKey].includes(mapped.i)) asked[storeKey].push(mapped.i);if(mode==="training")b.classList.add(mapped.x[2]?"training-good":"training-neutral")}
-    else{a.textContent=storeKey==="history"?(["病人：這部分我不太確定。","病人：我沒有特別注意到這件事。","病人：這方面好像沒有明顯不舒服。"][Math.floor(Math.random()*3)]):"考官：此項檢查在本病例沒有提供額外資訊。";a.classList.remove("hidden");errors.push(label);if(mode==="training")b.classList.add("training-bad")}
+    if(mapped){
+      const result=mapped.x[1];
+      a.textContent=result;
+      a.classList.remove("hidden");
+      if(["history","exam","tests"].includes(storeKey)){
+        a.appendChild(document.createElement("br"));
+        a.appendChild(makePinButton(storeKey,label,result));
+      }
+      if(!asked[storeKey].includes(mapped.i)) asked[storeKey].push(mapped.i);
+      if(mode==="training")b.classList.add(mapped.x[2]?"training-good":"training-neutral")
+    }else{
+      a.textContent=storeKey==="history"
+        ?(["病人：這部分我不太確定。","病人：我沒有特別注意到這件事。","病人：這方面好像沒有明顯不舒服。"][Math.floor(Math.random()*3)])
+        :"考官：此項檢查在本病例沒有提供額外資訊。";
+      a.classList.remove("hidden");
+      errors.push(label);
+      if(mode==="training")b.classList.add("training-bad")
+    }
   };
   wrap.appendChild(b);wrap.appendChild(a);return wrap;
 }
@@ -441,12 +545,12 @@ function renderHistory(host){
 <div class="small">
 <b>主要作答方式：</b>直接點選下列問題，病人會立即回答。Real OSCE 不會告訴你哪題是核心題。<br>
 ${current.track==="pediatric"?"兒科要同時注意 current illness、feeding/urine、birth/vaccine/development 與 caregiver history。":""}
-</div><div class="notice" style="margin:10px 0">你選的框架：${document.getElementById("historyFramework").value}</div>`;
+</div><div class="notice" style="margin:10px 0">思考框架（optional／不計分）：${document.getElementById("historyFramework").value}<br><span class="small">它只是 checklist，不代表你必須依這個順序問。</span></div>`;
   let historyBase=current.track==="pediatric"?PED_HISTORY_POOL:HISTORY_POOL; let pool=buildPool(current.history.map(x=>x[0]),historyBase,34);
   let tip=document.createElement("div");
   tip.className="notice";
   tip.style.margin="10px 0";
-  tip.innerHTML="💡 <b>點一下問題＝詢問病人。</b> 已問過的題目只會做低調標記；Real OSCE 不會顯示對錯。";
+  tip.innerHTML="💡 <b>點一下問題＝詢問病人。</b> 得到回答後，可自行按 📌 收進 Scratchpad；系統不會替你判斷哪一題重要。Real OSCE 不顯示對錯。";
   host.appendChild(tip);
   let grid=document.createElement("div");grid.className="optiongrid";
   pool.forEach(q=>grid.appendChild(makeOpt(q,"history","", "history")));
@@ -465,13 +569,17 @@ ${current.track==="pediatric"?"兒科要同時注意 current illness、feeding/u
     let q=input.value.trim();
     if(!q)return;
     let mapped=mapQuestionToCase(q,current.history),out=document.getElementById("customHAns");
+    let box=document.createElement("div");box.className="answer";
     if(mapped){
-      out.innerHTML+=`<div class="answer"><b>你問：</b>${q}<br><b>病人：</b>${mapped.x[1]}</div>`;
+      box.innerHTML=`<b>你問：</b>${q}<br><b>病人：</b>${mapped.x[1]}`;
+      box.appendChild(document.createElement("br"));
+      box.appendChild(makePinButton("history",q,mapped.x[1]));
       if(!asked.history.includes(mapped.i)) asked.history.push(mapped.i);
     }else{
-      out.innerHTML+=`<div class="answer"><b>你問：</b>${q}<br><b>病人：</b>${["這部分我不太確定。","我沒有特別注意到這件事。","這方面好像沒有明顯不舒服。"][Math.floor(Math.random()*3)]}</div>`;
+      box.innerHTML=`<b>你問：</b>${q}<br><b>病人：</b>${["這部分我不太確定。","我沒有特別注意到這件事。","這方面好像沒有明顯不舒服。"][Math.floor(Math.random()*3)]}`;
       errors.push("History："+q);
     }
+    out.appendChild(box);
     input.value="";
     input.focus();
   }
@@ -485,22 +593,43 @@ ${current.track==="pediatric"?"兒科要同時注意 current illness、feeding/u
 let row=document.createElement("div");row.className="nextrow";let n=document.createElement("button");n.className="primary";n.textContent="結束 History → 進入 PE / MSE";n.onclick=leaveStage;row.appendChild(n);host.appendChild(row)
 }
 function renderExam(host){
-  host.innerHTML=`<h2>${current.track==="psychiatric"?"Mental Status Examination / Risk":current.track==="pediatric"?"Pediatric Focused PE":"Focused PE"}</h2><div class="small">做了才會得到 finding；同義檢查會回傳同一個 finding。系統不再把「未對應到病例資料」誤寫成「正常」。進下一階段後不能回來補。</div>`;
+  host.innerHTML=`<h2>${current.track==="psychiatric"?"Mental Status Examination / Risk":current.track==="pediatric"?"Pediatric Focused PE":"Focused PE"}</h2><div class="small">做了才會得到 finding；同義檢查會回傳同一個 finding。得到結果後可自行按 📌 收進 Scratchpad。系統不會自動替你整理或判斷重要性。進下一階段後不能回來補。</div>`;
   let examBase=current.track==="pediatric"?PED_EXAM_POOL:EXAM_POOL; let pool=buildPool(current.exam.map(x=>x[0]),examBase,28);let grid=document.createElement("div");grid.className="optiongrid";pool.forEach(q=>grid.appendChild(makeOpt(q,"exam","", "exam")));host.appendChild(grid);
   let row=document.createElement("div");row.className="nextrow";let n=document.createElement("button");n.className="primary";n.textContent="結束 PE / MSE → 進入檢查";n.onclick=leaveStage;row.appendChild(n);host.appendChild(row)
 }
 function renderTests(host){
-  host.innerHTML=`<h2>Investigation</h2><div class="small">你沒 order 的檢查，報告不會自動出現；同一 clinical test 的中英文／同義名稱只會保留一個選項，避免重複與矛盾結果。${current.id==="IM30"?"<br><b>Status epilepticus：</b>先做不延誤 resuscitation 的 bedside / laboratory evaluation；影像時機要和 ongoing seizure、ABC 穩定度一起判斷。":""}</div>`;
+  host.innerHTML=`<h2>Investigation</h2><div class="small">你沒 order 的檢查，報告不會自動出現；同一 clinical test 的中英文／同義名稱只會保留一個選項。看到結果後可自行按 📌 收進 Scratchpad。${current.id==="IM30"?"<br><b>Status epilepticus：</b>先做不延誤 resuscitation 的 bedside / laboratory evaluation；影像時機要和 ongoing seizure、ABC 穩定度一起判斷。":""}</div>`;
   let testBase=current.track==="pediatric"?PED_TEST_POOL:TEST_POOL; let pool=buildPool(current.tests.map(x=>x[0]),testBase,26);let grid=document.createElement("div");grid.className="optiongrid";pool.forEach(q=>grid.appendChild(makeOpt(q,"tests","", "tests")));host.appendChild(grid);
   let row=document.createElement("div");row.className="nextrow";let n=document.createElement("button");n.className="primary";n.textContent="結束 Investigation → Clinical reasoning";n.onclick=leaveStage;row.appendChild(n);host.appendChild(row)
 }
 function renderDx(host){
-  host.innerHTML=`<h2>Clinical reasoning</h2><div class="small">請選最可能診斷，再自行寫 supporting evidence 與 dangerous differential。</div>`;
-  let sel=document.createElement("select");sel.id="dxSel";sel.innerHTML='<option value="">請選擇最可能診斷</option>'+shuffle([...new Set([current.dx,...current.dx_options,...shuffle(ALL_DX).slice(0,12)])]).map(x=>`<option>${x}</option>`).join("");host.appendChild(sel);
-  host.innerHTML+=`<h3>Supporting evidence</h3><textarea id="supportText" placeholder="你目前掌握哪些證據支持這個診斷？"></textarea><h3>Dangerous differential</h3><textarea id="ddxText" placeholder="至少列出 2–3 個危險鑑別，以及你如何排除。"></textarea>`;
-  let row=document.createElement("div");row.className="nextrow";let n=document.createElement("button");n.className="primary";n.textContent="提交推理 → Management";n.onclick=()=>{asked.dx={choice:document.getElementById("dxSel").value,support:document.getElementById("supportText").value,ddx:document.getElementById("ddxText").value};stage++;renderStagebar();renderStage()};row.appendChild(n);host.appendChild(row)
+  host.innerHTML=`<h2>DD / Diagnosis</h2>
+  <div class="small">
+    <b>核心：</b>選出最可能 diagnosis。<br>
+    <b>DD / supporting evidence：</b>可用短句、縮寫或 bullet；這兩格是 reasoning practice，<b>不因沒寫滿而扣核心分</b>。若怕忘記前面資料，可直接看上方 Scratchpad。
+  </div>`;
+  let sel=document.createElement("select");
+  sel.id="dxSel";
+  sel.innerHTML='<option value="">請選擇最可能 diagnosis</option>'+shuffle([...new Set([current.dx,...current.dx_options,...shuffle(ALL_DX).slice(0,12)])]).map(x=>`<option>${x}</option>`).join("");
+  host.appendChild(sel);
+  host.insertAdjacentHTML("beforeend",`
+    <h3>Supporting evidence（optional）</h3>
+    <textarea id="supportText" placeholder="可簡寫：orthopnea + wt↑ + crackles + CXR edema"></textarea>
+    <h3>Dangerous DD（optional）</h3>
+    <textarea id="ddxText" placeholder="可簡寫 1–3 個：ACS / PE / pneumonia…"></textarea>
+  `);
+  let row=document.createElement("div");row.className="nextrow";
+  let n=document.createElement("button");n.className="primary";n.textContent="確認 Diagnosis → Management";
+  n.onclick=()=>{
+    asked.dx={
+      choice:document.getElementById("dxSel").value,
+      support:document.getElementById("supportText").value,
+      ddx:document.getElementById("ddxText").value
+    };
+    stage++;renderStagebar();renderStage()
+  };
+  row.appendChild(n);host.appendChild(row)
 }
-
 function renderPlan(host){
   host.innerHTML=`<h2>Management</h2>
   <div class="small">直接點選你要做的處置。<b>點選順序就是你的處置優先序</b>；Real OSCE 不提示對錯。</div>
@@ -535,13 +664,78 @@ function renderPlan(host){
   });
   host.appendChild(grid);
   let row=document.createElement("div");row.className="nextrow";
-  let n=document.createElement("button");n.className="primary";n.textContent="結束 Management → 病人說明";
-  n.onclick=()=>{stage++;renderStagebar();renderStage()};
-  row.appendChild(n);host.appendChild(row)
+  let finishBtn=document.createElement("button");
+  finishBtn.className="primary";
+  finishBtn.textContent="完成核心 OSCE";
+  finishBtn.onclick=()=>finish(false);
+
+  let bonusBtn=document.createElement("button");
+  bonusBtn.textContent="Bonus：病人／家屬說明";
+  bonusBtn.onclick=()=>{stage++;renderStagebar();renderStage()};
+
+  row.appendChild(finishBtn);row.appendChild(bonusBtn);host.appendChild(row);
+
+  let note=document.createElement("div");
+  note.className="small";
+  note.style.marginTop="8px";
+  note.textContent="Communication 為 Bonus；跳過不扣核心分。";
+  host.appendChild(note)
 }
 function renderComm(host){
-  host.innerHTML=`<h2>病人／家屬說明</h2><div class="small">${current.track==="pediatric"?"請用照顧者聽得懂的語言說明目前風險、下一步、居家觀察與何時立即回院。":"最後兩分鐘，請說清楚你目前擔心什麼、下一步做什麼、為什麼。"}</div><textarea id="commText" placeholder="把你會對病人／家屬說的話寫在這裡。"></textarea>`;
-  let row=document.createElement("div");row.className="nextrow";let n=document.createElement("button");n.className="primary";n.textContent="完成 OSCE";n.onclick=()=>{asked.comm=[document.getElementById("commText").value];finish(false)};row.appendChild(n);host.appendChild(row)
+  host.innerHTML=`<h2>Bonus Communication</h2>
+  <div class="small">
+    這一站是 <b>optional bonus</b>，跳過不扣核心分。請點選你會對病人／家屬說的內容；Real OSCE 不顯示對錯。
+  </div>`;
+
+  const who=current.track==="pediatric"?"照顧者":current.track==="psychiatric"?"病人／家屬":"病人／家屬";
+  const good=[
+    `用白話向${who}說明目前最可能的 diagnosis：${current.dx}`,
+    `說明目前最重要的 risk／為什麼需要立即處理`,
+    `說明下一步 Investigation / monitoring / treatment plan`,
+    `說明若病況惡化可能需要 escalation（例如 ICU、airway、procedure 或 specialist care）`,
+    `確認${who}是否理解，並提供提問機會（teach-back / questions）`
+  ];
+  const bad=[
+    `直接保證「一定沒事」或「治療一定成功」`,
+    `只丟醫學術語，不確認${who}是否理解`,
+    `尚未完成評估就給出過度確定的 prognosis`
+  ];
+  let options=shuffle([...good,...bad]);
+  let grid=document.createElement("div");grid.className="optiongrid";
+
+  options.forEach(q=>{
+    let b=document.createElement("button");b.className="opt";b.textContent=q;
+    b.onclick=()=>{
+      const idx=asked.comm.indexOf(q);
+      if(idx>=0){
+        asked.comm.splice(idx,1);
+        b.classList.remove("picked","training-good","training-bad");
+      }else{
+        asked.comm.push(q);
+        b.classList.add("picked");
+        if(mode==="training"){
+          b.classList.add(good.includes(q)?"training-good":"training-bad")
+        }
+      }
+    };
+    grid.appendChild(b)
+  });
+  host.appendChild(grid);
+
+  host.insertAdjacentHTML("beforeend",`
+    <h3>其他想補充的說明（optional）</h3>
+    <textarea id="commText" placeholder="不需要作文；想補一句再寫即可。"></textarea>
+  `);
+
+  let row=document.createElement("div");row.className="nextrow";
+  let skip=document.createElement("button");skip.textContent="跳過／完成 OSCE";skip.onclick=()=>finish(false);
+  let done=document.createElement("button");done.className="primary";done.textContent="完成 Bonus Communication";
+  done.onclick=()=>{
+    const extra=document.getElementById("commText").value.trim();
+    if(extra)asked.comm.push("FREE:"+extra);
+    finish(false)
+  };
+  row.appendChild(skip);row.appendChild(done);host.appendChild(row)
 }
 function unique(a){return [...new Set(a)]}
 function scoreStage(arr,askedIdx){let keys=arr.map((x,i)=>x[2]?i:null).filter(x=>x!==null),got=unique(askedIdx).filter(i=>keys.includes(i));return {got:got.length,total:keys.length,miss:keys.filter(i=>!got.includes(i)).map(i=>arr[i][0])}}
@@ -560,13 +754,23 @@ function finish(timeout=false){
     if(bestScore>=2&&best>=0)matchedPlanIdx.add(best)
   });
   let planHits=matchedPlanIdx.size;
-  let raw=Math.round((h.got/Math.max(1,h.total))*25+(e.got/Math.max(1,e.total))*20+(t.got/Math.max(1,t.total))*15+(dxCorrect?15:0)+(planHits/Math.max(1,correctPlans.length))*15+((asked.comm?.[0]||"").length>=20?10:4));
+  // Core score = 100, communication is optional bonus and never required to pass.
+  let raw=Math.round(
+    (h.got/Math.max(1,h.total))*25+
+    (e.got/Math.max(1,e.total))*20+
+    (t.got/Math.max(1,t.total))*15+
+    (dxCorrect?15:0)+
+    (planHits/Math.max(1,correctPlans.length))*25
+  );
+  const commGood=(asked.comm||[]).filter(x=>!String(x).startsWith("FREE:")&&!/保證|只丟醫學術語|過度確定/.test(x)).length;
+  const commBad=(asked.comm||[]).filter(x=>/保證|只丟醫學術語|過度確定/.test(x)).length;
+  const commBonus=Math.max(0,Math.min(5,commGood-commBad));
   if(timeout)raw=Math.max(0,raw-8);
   let noise=Math.min(12,errors.length);raw=Math.max(0,raw-noise);
   let misses=[...h.miss.map(x=>"History："+x),...e.miss.map(x=>"PE/MSE："+x),...t.miss.map(x=>"檢查："+x),...correctPlans.filter((x,i)=>!matchedPlanIdx.has(i)).map(x=>"Management："+x)];
   if(!dxCorrect)misses.unshift("核心診斷未答對");
   document.getElementById("reportTitle").textContent=current.id+"｜"+current.title;document.getElementById("reportDx").innerHTML=`標準核心診斷：<b>${current.dx}</b>`;document.getElementById("reportScore").textContent=raw;
-  document.getElementById("reportSummary").innerHTML=`<div class="small">病例資料版本：V1.1.2</div><div class="${raw>=60?"ok":"bad"}"><b>${raw>=60?"訓練達標":"訓練未達標"}</b></div><div class="small">History ${h.got}/${h.total}｜PE/MSE ${e.got}/${e.total}｜Tests ${t.got}/${t.total}｜Diagnosis ${dxCorrect?"✓":"✗"}｜低價值／無關問題 ${errors.length}</div>`;
+  document.getElementById("reportSummary").innerHTML=`<div class="small">病例資料版本：V1.2.1</div><div class="${raw>=60?"ok":"bad"}"><b>${raw>=60?"訓練達標":"訓練未達標"}</b></div><div class="small">Core score ${raw}/100｜History ${h.got}/${h.total}｜PE/MSE ${e.got}/${e.total}｜Tests ${t.got}/${t.total}｜Diagnosis ${dxCorrect?"✓":"✗"}｜Management ${planHits}/${correctPlans.length}｜Communication bonus +${commBonus}/5｜低價值／無關問題 ${errors.length}</div>`;
   document.getElementById("missed").innerHTML=misses.length?misses.map(x=>`<div class="bad" style="margin:6px 0">• ${x}</div>`).join(""):'<div class="ok">核心資料都有問到。</div>';
   document.getElementById("errors").innerHTML=errors.length?unique(errors).slice(0,20).map(x=>`<div class="resultbox">${x}</div>`).join(""):'<div class="ok">沒有明顯低價值選擇。</div>';
   document.getElementById("key").innerHTML=`<b>History：</b>${current.history.filter(x=>x[2]).map(x=>x[0]).join("<br>• ")}<hr><b>PE/MSE：</b>${current.exam.filter(x=>x[2]).map(x=>x[0]).join("、")}<hr><b>Investigation：</b>${current.tests.filter(x=>x[2]).map(x=>x[0]).join("、")}<hr><b>Management：</b>${correctPlans.join(" → ")}<hr>${current.pearls.map(x=>"• "+x).join("<br>")}`;
@@ -575,6 +779,6 @@ function finish(timeout=false){
 function reviewCase(){current=CASES.find(c=>c.id===document.getElementById("caseSelect").value);document.getElementById("reportTitle").textContent=current.id+"｜"+current.title;document.getElementById("reportDx").innerHTML=`標準核心診斷：<b>${current.dx}</b>`;document.getElementById("reportScore").textContent="—";document.getElementById("reportSummary").innerHTML="<div class='small'>Review mode</div>";document.getElementById("missed").innerHTML="";document.getElementById("errors").innerHTML="";document.getElementById("key").innerHTML=`<b>History：</b>${current.history.map(x=>x[0]+" → "+x[1]).join("<br>")}<hr><b>PE/MSE：</b>${current.exam.map(x=>x[0]+" → "+x[1]).join("<br>")}<hr><b>Tests：</b>${current.tests.map(x=>x[0]+" → "+x[1]).join("<br>")}<hr><b>Management：</b>${current.plan.map(x=>(x[1]?"✅ ":"⚠️ ")+x[0]).join("<br>")}`;show("report")}
 document.getElementById("retryBtn").onclick=()=>{show("setup");document.getElementById("caseSelect").value=current.id};
 document.getElementById("nextBtn").onclick=()=>{show("setup");randomCase()};
-refill();randomCase();document.title="NP OSCE Leader V1.1.2｜Mystery OSCE";
+refill();randomCase();document.title="NP OSCE Leader V1.2.1｜Pin-to-Scratchpad";
 </script>
 </body></html>

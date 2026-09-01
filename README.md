@@ -1,15 +1,41 @@
-# NP OSCE Leader V1.1.2 — Mg / mg/dL Mapping Fix
+# NP OSCE Leader V1.2.1 — Pin-to-Scratchpad
 
-## 修正
-- 修正 `Ca/Mg/Phos` 被錯配到 `POC glucose = 96 mg/dL` 的問題。
-- 根因：文字比對把單位 `mg/dL` 中的 `mg` 誤判成 magnesium（Mg）。
-- 現在所有常見濃度單位會先從 semantic matching 中移除。
-- Myasthenia gravis 也改用 `mg_disease` 內部概念，不再和 magnesium 的 Mg 混在一起。
-- IM30 Status Epilepticus 的電解質結果改為：
-  - Na 132 mmol/L
-  - K 3.8 mmol/L
-  - ionized Ca 1.17 mmol/L
-  - Mg 1.5 mg/dL（偏低）
-  - Phos 2.6 mg/dL
+## 這版解決什麼？
+實際 OSCE 可用紙筆快速記重點，但手機／電腦若要求重新打完整 finding，會增加 keyboard burden。
+
+因此 V1.2.1 改成：
+
+### 📌 一鍵記到小抄
+History、PE/MSE、Investigation 得到病例資料後，都會出現：
+`📌 記到小抄`
+
+使用者決定要不要記。按下後，系統只把「當下看到的問題／檢查名稱＋結果」原樣抄入 Scratchpad。
+
+例如：
+- History｜最近平躺會不會更喘？ → 最近一週需墊三個枕頭。
+- PE/MSE｜生命徵象 → BP 210/118，HR 124，SpO₂ 80%。
+- Investigation｜CXR → bilateral pulmonary edema。
+
+### 不會做的事
+系統不會：
+- 自動把所有資料存進 Scratchpad
+- 標示核心／非核心
+- 幫忙選重點
+- 幫忙做 summary
+- 幫忙產生 DD
+- 補入使用者沒問、沒做、沒 order 的資料
+
+所以訓練的仍是「你決定什麼值得記」，不是打字速度。
+
+### Scratchpad
+- 全程保留
+- 顯示目前 📌 數量
+- 每筆可個別移除
+- 門外 prep notes 仍會帶入
+- 仍可自行輸入 shorthand
+- 完全不影響 scoring
+
+臨床發想：台北慈濟醫院 專科護理師護理長 鄭介炬  
+原型設計暨後續開發執行：奇美醫院加護醫學部 專科護理師 洪苡瑾
 
 © 2026 洪苡瑾・鄭介炬 版權所有｜未經授權請勿修改、重製、轉載或二次發布。
