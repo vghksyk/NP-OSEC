@@ -1,41 +1,32 @@
-# NP OSCE Leader V0.8 Structured History Challenge
+# NP OSCE Leader V0.9 Real OSCE Mode
 
-90 cases：內科 30、外科 30、精神科 30。
+目前 91 cases：內科、外科、精神科，並新增壺腹癌阻塞性黃疸題型。
 
-## V0.8 History taking 改版
-History 不再是一頁就結束，而是三層闖關：
-1. 現在病史 HPI
-2. 過去病史／相似發作／用藥／過敏／手術／個人史
-3. Focused ROS／TOCC
+## Real OSCE Mode
+- 你問什麼，病人才回答什麼
+- 不顯示綠／紅
+- 不顯示完成度或「還差幾題」
+- History 結束後不能返回
+- PE/MSE、Investigation 同樣做了才有資料
+- 沒 order 的 lab / imaging 不會自己出現
+- Diagnosis 自己選並寫 supporting evidence / dangerous differential
+- Management 不提示正確答案
+- 全部結束後才揭曉漏問、漏做、漏 order 與 critical miss
 
-支援作為腦內提示的框架名稱：
-- OLD CARTS
-- LQQOPERA
-- DEMP FAST
-- HEENT-HLUGE
+## Training Mode
+- 保留即時綠／黃／紅回饋
+- 適合第一次練習
 
-正式 Challenge 不會照口訣字母順序出題；選項會打亂。
-核心問題答對才轉綠，次要但合理為黃色，無關或低價值問題轉紅並扣分。
-完成該層核心項目後才能進下一關。
-
-## 其他
-- Focused PE / MSE
-- Investigation
-- 多診斷鑑別
-- Management 順序
-- 病人說明
-- 2+15 分鐘倒數與考場鈴聲
+## 時間
+- 門外閱讀 2 分鐘
+- 正式考站 15 分鐘
+- 剩 2 分鐘單響
+- 時間到雙響
 
 ## 署名
 臨床構想與原型設計：
-奇美加護醫學部 洪苡瑾
-台北慈濟醫院 專師護理部護理長 鄭介炬
+- 奇美加護醫學部 洪苡瑾
+- 台北慈濟醫院 專師護理部護理長 鄭介炬
 
 © 2026 洪苡瑾・鄭介炬 版權所有。
 未經授權請勿修改、重製、轉載或二次發布。
-
-
-## V0.8.1 小更新
-- 內科題庫符號改為：🩺 聽診器
-- 外科題庫符號改為：🔪 手術刀
-- 精神科題庫符號維持：🧠
