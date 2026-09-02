@@ -1,9 +1,9 @@
-# NP OSCE Leader V1.2.1 — Pin-to-Scratchpad
+# NP OSCE Leader V1.2.2 — Pin-to-Scratchpad
 
 ## 這版解決什麼？
 實際 OSCE 可用紙筆快速記重點，但手機／電腦若要求重新打完整 finding，會增加 keyboard burden。
 
-因此 V1.2.1 改成：
+因此 V1.2.2 改成：
 
 ### 📌 一鍵記到小抄
 History、PE/MSE、Investigation 得到病例資料後，都會出現：
@@ -39,3 +39,12 @@ History、PE/MSE、Investigation 得到病例資料後，都會出現：
 原型設計暨後續開發執行：奇美醫院加護醫學部 專科護理師 洪苡瑾
 
 © 2026 洪苡瑾・鄭介炬 版權所有｜未經授權請勿修改、重製、轉載或二次發布。
+
+
+## V1.2.2 Icon Fix
+- 補回遺漏的 `assets/` icon 資料夾。
+- 修正首頁左上角 NP OSCE Leader icon。
+- 新增 favicon。
+- 新增 iPhone / iPad `apple-touch-icon`。
+- 新增 `manifest.webmanifest` 與 192/512 px app icons。
+- 加到手機主畫面時，可顯示 NP OSCE icon。

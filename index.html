@@ -4,9 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#244f82">
-<link rel="icon" type="image/png" href="assets/np-osce-icon.png">
-<link rel="apple-touch-icon" href="assets/np-osce-icon.png">
-<title>NP OSCE Leader｜V1.2.1 Pin-to-Scratchpad</title>
+<title>NP OSCE Leader｜V1.2.2</title>
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#234f82">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="NP OSCE">
+
 <style>
 :root{--bg:#f3f6fa;--card:#fff;--text:#182233;--muted:#687386;--line:#dbe3ed;--accent:#234f82;--soft:#edf4fb;--danger:#b42318;--ok:#17705e}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}
@@ -42,7 +47,7 @@ select,textarea,input[type="text"]{width:100%;padding:11px;border:1px solid var(
 <div class="byline" style="line-height:1.65;margin-top:5px">
   臨床發想｜<b>台北慈濟醫院 專科護理師護理長 鄭介炬</b><br>
   原型設計暨後續開發執行｜<b>奇美醫院加護醫學部 專科護理師 洪苡瑾</b>
-</div></div></div><div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end"><div class="badge">151 cases</div><div class="badge"><b>Build V1.2.1</b></div></div></div>
+</div></div></div><div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end"><div class="badge">151 cases</div><div class="badge"><b>Build V1.2.2</b></div></div></div>
 
 <section id="setup" class="card">
 <h2>模式</h2>
@@ -68,7 +73,7 @@ select,textarea,input[type="text"]{width:100%;padding:11px;border:1px solid var(
 <h3>題目</h3><select id="caseSelect"></select>
 <div class="grid2" style="margin-top:8px"><button id="randomBtn">🎲 隨機換題</button><button id="startBtn" class="primary">開始</button></div>
 <div class="notice" style="margin-top:10px"><b>📝 Scratchpad：</b>不用把病人回答重新打一遍。History／PE／Investigation 得到資料後，按 📌 即可抄進小抄；是否要記由你決定，系統不會自動整理。<br><br><b>🕵️ 模糊題：</b>主訴只提供病人／家屬會說的內容，不先給疾病名稱或經典 triad；需靠 History、PE 與檢查逐步辨認。Real OSCE 題目下拉選單也會隱藏病例標題，避免開始前被劇透。<br><br><b>操作方式：</b>預設問題請直接點一下；若要補問預設外的內容，可在下方自由輸入，電腦版按 Enter 送出。</div><h3>考場鈴聲</h3><label><input type="checkbox" id="bellToggle" checked> 剩 2 分鐘單響；時間到雙響</label>
-<div class="notice" style="margin-top:12px"><b>Real OSCE 規則：</b><br><b>Build V1.2.1：</b>History 核心題與最後 report 使用同一組完整問句，不再顯示「說話／trigger」等內部簡寫。<br><br>每題所有核心 History／PE／Investigation／Management 都一定會存在於可選範圍，只是會和大量干擾選項混在一起。自訂輸入只是額外追問，不再用來補系統漏題。Communication 為 optional bonus，不完成不扣核心分。<br><br>你問什麼，病人才回答什麼。沒有綠燈、沒有「還差幾題」、沒有系統提示。按「結束 History／進下一階段」後就不能回頭；漏掉的資料到最後才會揭曉。</div>
+<div class="notice" style="margin-top:12px"><b>Real OSCE 規則：</b><br><b>Build V1.2.2：</b>History 核心題與最後 report 使用同一組完整問句，不再顯示「說話／trigger」等內部簡寫。<br><br>每題所有核心 History／PE／Investigation／Management 都一定會存在於可選範圍，只是會和大量干擾選項混在一起。自訂輸入只是額外追問，不再用來補系統漏題。Communication 為 optional bonus，不完成不扣核心分。<br><br>你問什麼，病人才回答什麼。沒有綠燈、沒有「還差幾題」、沒有系統提示。按「結束 History／進下一階段」後就不能回頭；漏掉的資料到最後才會揭曉。</div>
 </section>
 
 <section id="prep" class="card hidden">
@@ -102,7 +107,7 @@ select,textarea,input[type="text"]{width:100%;padding:11px;border:1px solid var(
 <div class="card grid2"><button id="retryBtn">同題再考</button><button id="nextBtn" class="primary">下一題</button></div>
 </section>
 
-<footer>教育訓練用途，非衛福部官方題庫或正式評分系統。｜NP OSCE Leader V1.2.1｜Real OSCE Mode<br><b><div class="small" style="margin-top:10px;line-height:1.7">
+<footer>教育訓練用途，非衛福部官方題庫或正式評分系統。｜NP OSCE Leader V1.2.2｜Real OSCE Mode<br><b><div class="small" style="margin-top:10px;line-height:1.7">
 臨床發想：台北慈濟醫院 專科護理師護理長 鄭介炬<br>
 原型設計暨後續開發執行：奇美醫院加護醫學部 專科護理師 洪苡瑾
 </div>
@@ -157,7 +162,7 @@ document.getElementById("enterBtn").onclick=()=>{clearInterval(prepInt);startSta
 function startStation(){
   stage=0;finished=false;asked={history:[],exam:[],tests:[],plans:[],comm:[]};errors=[];pinnedNotes=[];
   show("station");
-  document.getElementById("stationMeta").textContent=trackName(current.track)+"｜"+current.category+"｜Data V1.2.1";
+  document.getElementById("stationMeta").textContent=trackName(current.track)+"｜"+current.category+"｜Data V1.2.2";
   document.getElementById("stationPatient").textContent=current.patient;
   document.getElementById("stationChief").textContent="主訴："+current.chief;
   const prep=document.getElementById("prepNotes")?.value||"";
@@ -770,7 +775,7 @@ function finish(timeout=false){
   let misses=[...h.miss.map(x=>"History："+x),...e.miss.map(x=>"PE/MSE："+x),...t.miss.map(x=>"檢查："+x),...correctPlans.filter((x,i)=>!matchedPlanIdx.has(i)).map(x=>"Management："+x)];
   if(!dxCorrect)misses.unshift("核心診斷未答對");
   document.getElementById("reportTitle").textContent=current.id+"｜"+current.title;document.getElementById("reportDx").innerHTML=`標準核心診斷：<b>${current.dx}</b>`;document.getElementById("reportScore").textContent=raw;
-  document.getElementById("reportSummary").innerHTML=`<div class="small">病例資料版本：V1.2.1</div><div class="${raw>=60?"ok":"bad"}"><b>${raw>=60?"訓練達標":"訓練未達標"}</b></div><div class="small">Core score ${raw}/100｜History ${h.got}/${h.total}｜PE/MSE ${e.got}/${e.total}｜Tests ${t.got}/${t.total}｜Diagnosis ${dxCorrect?"✓":"✗"}｜Management ${planHits}/${correctPlans.length}｜Communication bonus +${commBonus}/5｜低價值／無關問題 ${errors.length}</div>`;
+  document.getElementById("reportSummary").innerHTML=`<div class="small">病例資料版本：V1.2.2</div><div class="${raw>=60?"ok":"bad"}"><b>${raw>=60?"訓練達標":"訓練未達標"}</b></div><div class="small">Core score ${raw}/100｜History ${h.got}/${h.total}｜PE/MSE ${e.got}/${e.total}｜Tests ${t.got}/${t.total}｜Diagnosis ${dxCorrect?"✓":"✗"}｜Management ${planHits}/${correctPlans.length}｜Communication bonus +${commBonus}/5｜低價值／無關問題 ${errors.length}</div>`;
   document.getElementById("missed").innerHTML=misses.length?misses.map(x=>`<div class="bad" style="margin:6px 0">• ${x}</div>`).join(""):'<div class="ok">核心資料都有問到。</div>';
   document.getElementById("errors").innerHTML=errors.length?unique(errors).slice(0,20).map(x=>`<div class="resultbox">${x}</div>`).join(""):'<div class="ok">沒有明顯低價值選擇。</div>';
   document.getElementById("key").innerHTML=`<b>History：</b>${current.history.filter(x=>x[2]).map(x=>x[0]).join("<br>• ")}<hr><b>PE/MSE：</b>${current.exam.filter(x=>x[2]).map(x=>x[0]).join("、")}<hr><b>Investigation：</b>${current.tests.filter(x=>x[2]).map(x=>x[0]).join("、")}<hr><b>Management：</b>${correctPlans.join(" → ")}<hr>${current.pearls.map(x=>"• "+x).join("<br>")}`;
@@ -779,6 +784,6 @@ function finish(timeout=false){
 function reviewCase(){current=CASES.find(c=>c.id===document.getElementById("caseSelect").value);document.getElementById("reportTitle").textContent=current.id+"｜"+current.title;document.getElementById("reportDx").innerHTML=`標準核心診斷：<b>${current.dx}</b>`;document.getElementById("reportScore").textContent="—";document.getElementById("reportSummary").innerHTML="<div class='small'>Review mode</div>";document.getElementById("missed").innerHTML="";document.getElementById("errors").innerHTML="";document.getElementById("key").innerHTML=`<b>History：</b>${current.history.map(x=>x[0]+" → "+x[1]).join("<br>")}<hr><b>PE/MSE：</b>${current.exam.map(x=>x[0]+" → "+x[1]).join("<br>")}<hr><b>Tests：</b>${current.tests.map(x=>x[0]+" → "+x[1]).join("<br>")}<hr><b>Management：</b>${current.plan.map(x=>(x[1]?"✅ ":"⚠️ ")+x[0]).join("<br>")}`;show("report")}
 document.getElementById("retryBtn").onclick=()=>{show("setup");document.getElementById("caseSelect").value=current.id};
 document.getElementById("nextBtn").onclick=()=>{show("setup");randomCase()};
-refill();randomCase();document.title="NP OSCE Leader V1.2.1｜Pin-to-Scratchpad";
+refill();randomCase();document.title="NP OSCE Leader V1.2.2｜Pin-to-Scratchpad";
 </script>
 </body></html>
