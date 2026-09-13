@@ -1,19 +1,44 @@
-# NP OSCE Leader V1.3 — Challenge 200
+# NP OSCE Leader V1.3.1 — GA4 Analytics
 
-總題數：200 cases
+GA4 Measurement ID: `G-VB3DB6S6EB`
 
-V1.3 新增 49 題 Challenge Mystery Cases，總題數 151 → 200。
+## 會送出的網站事件
+- `app_open`
+- `mode_select`
+- `track_select`
+- `case_style_select`
+- `random_case`
+- `case_start`
+- `station_enter`
+- `case_review`
+- `case_complete`
+- `case_timeout`
 
-- Internal Medicine +13
-- Surgery +12
-- Psychiatry +12
-- Pediatrics +12
+## case_complete parameters
+- case_id
+- track
+- category
+- mode
+- selected_style
+- case_style
+- core_score
+- communication_bonus
+- history_hits / history_total
+- pe_hits / pe_total
+- investigation_hits / investigation_total
+- management_hits / management_total
+- diagnosis_correct
+- core_miss_count
+- low_value_count
+- pinned_note_count
+- timed_out
 
-新增題優先採不同 diagnosis / differentials，以及非典型 presentation、clinical trap、time-critical decision；不是單純更換年齡與措辭灌題數。
+## 不會送到 GA4
+- 姓名
+- Email
+- 自由輸入 History 問句
+- Scratchpad 內容
+- Communication 自由文字
+- 病人資料
 
-新增「🧠 Challenge」篩選，可只抽 V1.3 新題；Real OSCE 仍不顯示病例 title。
-
-臨床發想：台北慈濟醫院 專科護理師護理長 鄭介炬  
-原型設計暨後續開發執行：奇美醫院加護醫學部 專科護理師 洪苡瑾
-
-© 2026 洪苡瑾・鄭介炬 版權所有｜未經授權請勿修改、重製、轉載或二次發布。
+此 GA4 Property 僅供 NP OSCE Leader 使用，不與 ICU Communication Platform 或 ACLS Code Leader 共用。
