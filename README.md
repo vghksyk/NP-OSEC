@@ -1,50 +1,19 @@
-# NP OSCE Leader V1.2.2 — Pin-to-Scratchpad
+# NP OSCE Leader V1.3 — Challenge 200
 
-## 這版解決什麼？
-實際 OSCE 可用紙筆快速記重點，但手機／電腦若要求重新打完整 finding，會增加 keyboard burden。
+總題數：200 cases
 
-因此 V1.2.2 改成：
+V1.3 新增 49 題 Challenge Mystery Cases，總題數 151 → 200。
 
-### 📌 一鍵記到小抄
-History、PE/MSE、Investigation 得到病例資料後，都會出現：
-`📌 記到小抄`
+- Internal Medicine +13
+- Surgery +12
+- Psychiatry +12
+- Pediatrics +12
 
-使用者決定要不要記。按下後，系統只把「當下看到的問題／檢查名稱＋結果」原樣抄入 Scratchpad。
+新增題優先採不同 diagnosis / differentials，以及非典型 presentation、clinical trap、time-critical decision；不是單純更換年齡與措辭灌題數。
 
-例如：
-- History｜最近平躺會不會更喘？ → 最近一週需墊三個枕頭。
-- PE/MSE｜生命徵象 → BP 210/118，HR 124，SpO₂ 80%。
-- Investigation｜CXR → bilateral pulmonary edema。
-
-### 不會做的事
-系統不會：
-- 自動把所有資料存進 Scratchpad
-- 標示核心／非核心
-- 幫忙選重點
-- 幫忙做 summary
-- 幫忙產生 DD
-- 補入使用者沒問、沒做、沒 order 的資料
-
-所以訓練的仍是「你決定什麼值得記」，不是打字速度。
-
-### Scratchpad
-- 全程保留
-- 顯示目前 📌 數量
-- 每筆可個別移除
-- 門外 prep notes 仍會帶入
-- 仍可自行輸入 shorthand
-- 完全不影響 scoring
+新增「🧠 Challenge」篩選，可只抽 V1.3 新題；Real OSCE 仍不顯示病例 title。
 
 臨床發想：台北慈濟醫院 專科護理師護理長 鄭介炬  
 原型設計暨後續開發執行：奇美醫院加護醫學部 專科護理師 洪苡瑾
 
 © 2026 洪苡瑾・鄭介炬 版權所有｜未經授權請勿修改、重製、轉載或二次發布。
-
-
-## V1.2.2 Icon Fix
-- 補回遺漏的 `assets/` icon 資料夾。
-- 修正首頁左上角 NP OSCE Leader icon。
-- 新增 favicon。
-- 新增 iPhone / iPad `apple-touch-icon`。
-- 新增 `manifest.webmanifest` 與 192/512 px app icons。
-- 加到手機主畫面時，可顯示 NP OSCE icon。
